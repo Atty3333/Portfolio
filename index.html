@@ -11,13 +11,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 
     <style>
-        /* Benjamin Creative Vibe: Variables */
+        /* Variables */
         :root {
             --bg: #050505;
-            --text-main: #EAEAEA;
-            --text-dim: #888888;
+            --surface: #111111;
+            --surface-hover: #1a1a1a;
+            --text-main: #F4F4F4; /* Brightened for better contrast */
+            --text-dim: #999999;
             --border-color: rgba(255, 255, 255, 0.15);
             --accent: #FFFFFF;
+            --accent-glow: rgba(255, 255, 255, 0.1);
+            --success: #27C93F;
             
             --font-display: 'Space Grotesk', sans-serif;
             --font-mono: 'Space Mono', monospace;
@@ -29,8 +33,24 @@
             background-color: var(--bg);
             color: var(--text-main);
             font-family: var(--font-display);
+            /* Increased base font size to make everything slightly larger */
+            font-size: 110%; 
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
+        }
+
+        /* Hover Scale Physics (Applied globally to interactive elements) */
+        .hover-scale {
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
+                        box-shadow 0.3s ease, 
+                        border-color 0.3s ease,
+                        background-color 0.3s ease;
+            will-change: transform;
+        }
+        .hover-scale:hover {
+            transform: scale(1.025);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 15px var(--accent-glow);
+            z-index: 10;
         }
 
         /* -------------------------------------
@@ -45,7 +65,7 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            cursor: pointer; /* Tells user they can click */
+            cursor: pointer;
             transition: opacity 0.8s ease, visibility 0.8s;
         }
 
@@ -55,25 +75,24 @@
             pointer-events: none;
         }
 
-        .intro-content {
-            padding: 0 3vw;
-        }
+        .intro-content { padding: 0 3vw; }
 
         .hero-title {
-            font-size: clamp(4rem, 10vw, 10rem);
+            font-size: clamp(4.5rem, 11vw, 12rem); /* Increased scale */
             line-height: 0.9;
             text-transform: uppercase;
-            letter-spacing: -2px;
-            margin-bottom: 1rem;
+            letter-spacing: -3px;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 0 40px rgba(255,255,255,0.1);
         }
 
         .hero-meta {
             font-family: var(--font-mono);
             color: var(--text-dim);
-            font-size: 0.9rem;
+            font-size: 1.05rem; /* Increased */
             margin-bottom: 4rem;
             display: flex;
-            gap: 2rem;
+            gap: 2.5rem;
             flex-wrap: wrap;
         }
 
@@ -83,12 +102,13 @@
             border-top: 1px solid var(--border-color);
             border-bottom: 1px solid var(--border-color);
             overflow: hidden;
-            padding: 1rem 0;
+            padding: 1.2rem 0;
+            background-color: var(--surface);
         }
         .marquee {
             white-space: nowrap;
             font-family: var(--font-mono);
-            font-size: 1rem;
+            font-size: 1.1rem; /* Increased */
             text-transform: uppercase;
             animation: scroll-left 25s linear infinite;
         }
@@ -99,15 +119,15 @@
 
         .enter-prompt {
             font-family: var(--font-mono);
-            font-size: 0.75rem;
+            font-size: 0.85rem;
             color: var(--text-dim);
             text-align: center;
             text-transform: uppercase;
-            margin-top: 4rem;
+            margin-top: 5rem;
             animation: pulse 2s infinite;
         }
         @keyframes pulse {
-            0%, 100% { opacity: 0.4; }
+            0%, 100% { opacity: 0.3; }
             50% { opacity: 1; }
         }
 
@@ -117,7 +137,7 @@
         #main-portfolio {
             opacity: 0;
             visibility: hidden;
-            transition: opacity 1s ease 0.3s; /* Delay slightly so splash fades first */
+            transition: opacity 1s ease 0.3s;
         }
         #main-portfolio.visible {
             opacity: 1;
@@ -131,9 +151,9 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1.5rem 3vw;
+            padding: 1.5rem 4vw;
             background: rgba(5, 5, 5, 0.85);
-            backdrop-filter: blur(12px);
+            backdrop-filter: blur(16px);
             border-bottom: 1px solid var(--border-color);
             z-index: 1000;
         }
@@ -141,27 +161,28 @@
         .brand-logo {
             font-family: var(--font-mono);
             font-weight: 700;
-            font-size: 1rem;
+            font-size: 1.15rem; /* Increased */
             letter-spacing: -0.5px;
         }
 
-        .nav-links { display: flex; gap: 2rem; }
+        .nav-links { display: flex; gap: 2.5rem; }
         .nav-links button {
             background: none; border: none;
             color: var(--text-dim);
             font-family: var(--font-mono);
-            font-size: 0.85rem;
+            font-size: 0.95rem; /* Increased */
             text-transform: uppercase;
             cursor: pointer;
-            transition: color 0.3s;
+            transition: color 0.3s, transform 0.2s;
         }
-        .nav-links button:hover, .nav-links button.active {
-            color: var(--text-main);
+        .nav-links button:hover, .nav-links button.active { 
+            color: var(--text-main); 
+            transform: translateY(-2px);
         }
 
         /* Layout Container */
         main {
-            padding: 8rem 3vw 4rem;
+            padding: 9rem 4vw 5rem;
             min-height: 100vh;
         }
 
@@ -183,43 +204,45 @@
         .cv-container {
             border-top: 1px solid var(--border-color);
             border-left: 1px solid var(--border-color);
+            background-color: var(--surface);
         }
 
         .cv-header {
-            padding: 2rem 2.5rem;
+            padding: 2.5rem 3rem;
             border-bottom: 1px solid var(--border-color);
             border-right: 1px solid var(--border-color);
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-            gap: 1rem;
+            gap: 1.5rem;
         }
 
         .cv-header h2 {
-            font-size: 2rem;
+            font-size: 2.4rem; /* Increased */
             letter-spacing: -1px;
         }
 
         .cv-status {
             font-family: var(--font-mono);
-            font-size: 0.85rem;
-            color: #27C93F;
+            font-size: 0.95rem; /* Increased */
+            color: var(--success);
             border: 1px solid var(--border-color);
-            padding: 0.4rem 0.8rem;
+            padding: 0.5rem 1rem;
             border-radius: 20px;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
+            background: rgba(39, 201, 63, 0.05);
         }
 
         .cv-status::before {
             content: "";
             display: inline-block;
-            width: 8px;
-            height: 8px;
-            background-color: #27C93F;
+            width: 10px; height: 10px;
+            background-color: var(--success);
             border-radius: 50%;
+            box-shadow: 0 0 8px var(--success);
         }
 
         .cv-body {
@@ -227,156 +250,252 @@
             grid-template-columns: 1fr 2.5fr;
         }
 
-        @media (max-width: 768px) {
-            .cv-body { grid-template-columns: 1fr; }
-        }
-
         .cv-sidebar, .cv-main {
-            padding: 2.5rem;
+            padding: 3rem;
             border-right: 1px solid var(--border-color);
             border-bottom: 1px solid var(--border-color);
         }
 
-        .cv-section {
-            margin-bottom: 3rem;
+        /* PROFILE INTEGRATION */
+        .profile-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            margin-bottom: 3.5rem;
+            padding: 2.5rem 2rem;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
         }
-        .cv-section:last-child {
-            margin-bottom: 0;
+
+        .profile-pic {
+            width: 140px; /* Increased */
+            height: 140px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1.2rem;
+            border: 2px solid var(--border-color);
+            transition: border-color 0.3s ease, transform 0.3s ease;
         }
+        
+        .profile-pic:hover { 
+            border-color: var(--accent); 
+            transform: scale(1.05) rotate(2deg);
+        }
+
+        .profile-name {
+            font-size: 1.8rem; /* Increased */
+            margin-bottom: 0.3rem;
+            color: var(--text-main);
+            letter-spacing: -0.5px;
+        }
+
+        .profile-title {
+            font-family: var(--font-mono);
+            font-size: 0.95rem;
+            color: var(--text-dim);
+            margin-bottom: 1.8rem;
+            line-height: 1.5;
+        }
+
+        .linkedin-btn {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            font-family: var(--font-mono);
+            font-size: 0.95rem;
+            color: var(--bg);
+            background-color: var(--accent);
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+        }
+
+        .cv-section { margin-bottom: 3.5rem; }
+        .cv-section:last-child { margin-bottom: 0; }
 
         .cv-section h3 {
             font-family: var(--font-mono);
-            font-size: 0.85rem;
+            font-size: 0.95rem;
             color: var(--text-dim);
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.8rem;
             text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .cv-sidebar p, .cv-list li {
-            font-size: 1.1rem;
-            line-height: 1.6;
-            margin-bottom: 0.8rem;
+            font-size: 1.15rem; /* Increased */
+            line-height: 1.7;
+            margin-bottom: 1rem;
         }
 
-        .cv-list {
-            list-style: none;
-        }
+        .cv-list { list-style: none; }
         .cv-list li::before {
             content: "— ";
-            color: var(--text-dim);
+            color: var(--accent);
         }
 
         .cv-item {
             display: flex;
-            gap: 2rem;
-            margin-bottom: 2.5rem;
+            gap: 2.5rem;
+            margin-bottom: 3rem;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid transparent;
         }
+        /* Hover scale applied to CV item wrappers */
+        .cv-item:hover {
+            background: rgba(255,255,255,0.02);
+            border-color: rgba(255,255,255,0.05);
+        }
+        
         .cv-item:last-child { margin-bottom: 0; }
 
         .cv-date {
             font-family: var(--font-mono);
-            font-size: 0.9rem;
-            color: var(--text-dim);
-            flex: 0 0 120px;
-            padding-top: 0.2rem;
+            font-size: 1rem;
+            color: var(--accent);
+            flex: 0 0 130px;
+            padding-top: 0.3rem;
         }
 
         .cv-content h4 {
-            font-size: 1.4rem;
-            margin-bottom: 0.5rem;
+            font-size: 1.6rem; /* Increased */
+            margin-bottom: 0.6rem;
         }
 
         .cv-content p {
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             color: var(--text-dim);
-            line-height: 1.6;
+            line-height: 1.7;
         }
 
-        .placeholder-box {
+        /* UI Cards for Certs & Projects */
+        .content-box {
             background: rgba(255, 255, 255, 0.03);
-            border: 1px dashed var(--border-color);
+            border: 1px solid var(--border-color);
+            padding: 2.5rem;
+            border-radius: 12px;
+            margin-bottom: 2.5rem;
+        }
+        
+        .content-box-header {
+            font-family: var(--font-mono);
+            font-size: 1rem;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.8rem;
+        }
+
+        .grid-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
             padding: 2rem;
             text-align: center;
-            font-family: var(--font-mono);
-            font-size: 0.85rem;
-            color: var(--text-dim);
-            margin-bottom: 2rem;
-            border-radius: 4px;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .card:hover {
+            border-color: rgba(255,255,255,0.3);
+            background: var(--surface-hover);
         }
 
-        @media (max-width: 600px) {
-            .cv-item { flex-direction: column; gap: 0.5rem; }
-            .cv-date { flex: auto; }
-        }    
+        .card img {
+            width: 90px;
+            height: 90px;
+            border-radius: 8px;
+            object-fit: cover;
+            margin-bottom: 1.2rem;
+            border: 1px solid var(--border-color);
+        }
         
-        /* Grid System */
+        .card.profile-card img {
+            border-radius: 50%;
+        }
+
+        .card h4 { font-size: 1.25rem; margin-bottom: 0.6rem; }
+        .card p { font-size: 1rem; color: var(--text-dim); }
+
+        /* -------------------------------------
+           TABS 02, 03, 04 LAYOUT
+        -------------------------------------- */
         .info-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 0;
             border-top: 1px solid var(--border-color);
             border-left: 1px solid var(--border-color);
         }
         .info-cell {
-            padding: 2.5rem;
+            padding: 3rem;
             border-right: 1px solid var(--border-color);
             border-bottom: 1px solid var(--border-color);
+            background: var(--surface);
         }
         .info-cell h3 {
             font-family: var(--font-mono);
-            font-size: 0.85rem;
+            font-size: 0.95rem;
             color: var(--text-dim);
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.8rem;
         }
-        .info-cell p, .info-cell ul { font-size: 1.2rem; line-height: 1.6; }
-        .info-cell ul { list-style: none; }
-        .info-cell li { margin-bottom: 0.5rem; }
+        .info-cell p { font-size: 1.3rem; line-height: 1.7; } /* Increased text */
 
-        /* -------------------------------------
-           TAB 02: SOFTWARE 
-        -------------------------------------- */
         .section-header {
             font-family: var(--font-mono);
-            margin-bottom: 2rem;
+            font-size: 1rem;
+            margin-bottom: 2.5rem;
             color: var(--text-dim);
             text-transform: uppercase;
         }
         
         .software-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
             gap: 4rem;
         }
 
         .device-frame {
             border: 1px solid var(--border-color);
-            border-radius: 8px;
+            border-radius: 12px;
             overflow: hidden;
             background: #111;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
         .device-topbar {
             background: #1A1A1A;
-            padding: 12px 16px;
+            padding: 14px 20px;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
             border-bottom: 1px solid var(--border-color);
         }
-        .dot { width: 10px; height: 10px; border-radius: 50%; }
+        .dot { width: 12px; height: 12px; border-radius: 50%; }
         .dot.r { background: #FF5F56; }
         .dot.y { background: #FFBD2E; }
         .dot.g { background: #27C93F; }
         .device-url {
-            margin-left: 1rem;
+            margin-left: 1.5rem;
             font-family: var(--font-mono);
-            font-size: 0.75rem;
+            font-size: 0.85rem;
             color: var(--text-dim);
         }
         .iframe-container {
             width: 100%;
             height: 60vh;
-            min-height: 400px;
+            min-height: 450px;
         }
         .iframe-container iframe {
             width: 100%;
@@ -385,29 +504,26 @@
             background: #000;
         }
         .device-caption {
-            margin-top: 1rem;
-            font-size: 1.1rem;
+            margin-top: 1.5rem;
+            font-size: 1.2rem;
             color: var(--text-dim);
+            text-align: center;
         }
-        .device-caption strong {
-            color: var(--text-main);
-        }
+        .device-caption strong { color: var(--text-main); }
 
-        /* -------------------------------------
-           TAB 03 & 04: HORIZONTAL SCROLL
-        -------------------------------------- */
-        .category-block { margin-bottom: 5rem; }
+        /* Horizontal Scroll */
+        .category-block { margin-bottom: 6rem; }
         
         .horizontal-scroll {
             display: flex;
             overflow-x: auto;
             scroll-snap-type: x mandatory;
-            gap: 2rem;
-            padding-bottom: 1.5rem;
+            gap: 2.5rem;
+            padding-bottom: 2rem;
             scrollbar-width: thin;
             scrollbar-color: var(--border-color) transparent;
         }
-        .horizontal-scroll::-webkit-scrollbar { height: 6px; }
+        .horizontal-scroll::-webkit-scrollbar { height: 8px; }
         .horizontal-scroll::-webkit-scrollbar-track { background: transparent; }
         .horizontal-scroll::-webkit-scrollbar-thumb { 
             background: var(--border-color); 
@@ -415,25 +531,25 @@
         }
         
         .scroll-item {
-            flex: 0 0 380px;
+            flex: 0 0 420px; /* Increased item width */
             scroll-snap-align: start;
         }
         
         .embed-card {
             border: 1px solid var(--border-color);
-            padding: 1rem;
+            padding: 1.2rem;
             background: rgba(255,255,255,0.02);
-            transition: border-color 0.3s ease;
+            border-radius: 12px;
         }
-        .embed-card:hover {
-            border-color: rgba(255,255,255,0.4);
-        }
+        .embed-card:hover { border-color: rgba(255,255,255,0.4); }
         
         .video-wrapper {
             position: relative;
             padding-bottom: 56.25%; 
             height: 0;
             background: #000;
+            border-radius: 8px;
+            overflow: hidden;
         }
         .video-wrapper iframe {
             position: absolute;
@@ -441,15 +557,28 @@
             width: 100%; height: 100%;
             border: 0;
         }
+
+        /* Responsive Fixes */
+        @media (max-width: 900px) {
+            .cv-body { grid-template-columns: 1fr; }
+            .cv-sidebar {
+                border-right: none;
+                border-bottom: 1px solid var(--border-color);
+            }
+        }
         
-        .spotify-embed iframe {
-            border-radius: 12px;
+        @media (max-width: 600px) {
+            body { font-size: 100%; }
+            .cv-item { flex-direction: column; gap: 1rem; }
+            .cv-date { flex: auto; }
+            .software-grid { grid-template-columns: 1fr; }
+            .scroll-item { flex: 0 0 300px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- 00: SPLASH SCREEN (Clicks anywhere to enter) -->
+    <!-- 00: SPLASH SCREEN -->
     <div id="intro-screen" onclick="enterSite()">
         <div class="intro-content">
             <h1 class="hero-title">ATANG<br>MUTEMA</h1>
@@ -467,15 +596,13 @@
             </div>
         </div>
 
-        <div class="enter-prompt">
-            ( Click anywhere to enter, or wait 5s )
-        </div>
+        <div class="enter-prompt">( Click anywhere to enter, or wait 5s )</div>
     </div>
 
-    <!-- MAIN PORTFOLIO (Hidden on load) -->
+    <!-- MAIN PORTFOLIO -->
     <div id="main-portfolio">
         <header>
-            <div class="brand-logo">PROD DAYZ</div>
+            <div class="brand-logo">MY PORTFOLIO</div>
             <nav class="nav-links">
                 <button class="active" onclick="switchTab('overview', this)">(01) Overview</button>
                 <button onclick="switchTab('software', this)">(02) Software</button>
@@ -487,8 +614,6 @@
         <main>
             <!-- 01: OVERVIEW -->
             <div id="overview" class="tab-content active">
-                
-                <!-- Editorial CV Layout -->
                 <div class="cv-container">
                     <div class="cv-header">
                         <h2>CURRICULUM VITAE</h2>
@@ -498,61 +623,94 @@
                     <div class="cv-body">
                         <!-- Sidebar: Profile & Stack -->
                         <div class="cv-sidebar">
-                            <div class="placeholder-box">
-                                [ PHOTO PLACEHOLDER ]<br><br>
-                                <a href="#" style="color:var(--text-main);">LinkedIn Profile &rarr;</a>
+                            <div class="profile-section hover-scale">
+                                <img src="1774604837483.jfif" alt="Atang Mutema Profile Picture" class="profile-pic" onerror="this.src='https://via.placeholder.com/140'">
+                                <h3 class="profile-name">Atang Mutema</h3>
+                                <p class="profile-title">Systems Engineering Student at BAC</p>
+                                <a href="https://www.linkedin.com/in/letso-mutema-1774592b0/" target="_blank" rel="noopener noreferrer" class="linkedin-btn hover-scale">
+                                    LinkedIn Profile &rarr;
+                                </a>
                             </div>
-                            
-                            <div class="cv-section">
-                                <h3>( PROFILE )</h3>
-                                <p>Blending logic and audio. Expanding foundations in software architecture, systems engineering, and modern music production under the moniker Prod Dayz.</p>
-                            </div>
-                            <div class="cv-section">
+
+                            <div class="cv-section hover-scale">
                                 <h3>( TECH STACK )</h3>
                                 <ul class="cv-list">
-                                    <li>Python (Llama / MCP / Groq)</li>
-                                    <li>Kotlin (Mobile MVPs)</li>
-                                    <li>Ubuntu Server / Nextcloud</li>
-                                    <li>HTML / CSS / JS</li>
+                                    <li>Python (LLMs / Qwen / Mistral / MCP)</li>
+                                    <li>Kotlin (Mobile App Development)</li>
+                                    <li>Ubuntu Server / Nextcloud Hosting</li>
+                                    <li>HTML / CSS / JS Architectures</li>
                                 </ul>
                             </div>
-                            <div class="cv-section">
-                                <h3>( AUDIO STACK )</h3>
+                            <div class="cv-section hover-scale">
+                                <h3>( AUDIO/VISUAL STACK )</h3>
                                 <ul class="cv-list">
-                                    <li>FL Studio / Beat Production</li>
-                                    <li>DaVinci Resolve / Video Editing</li>
+                                    <li>FL Studio (Trap / Hip-Hop Production)</li>
+                                    <li>DaVinci Resolve (Color Grading / Compound Clips)</li>
                                     <li>DXN PRO Y71s Monitoring</li>
+                                </ul>
+                            </div>    
+                            <div class="cv-section hover-scale">
+                                <h3>( DOMAIN EXPERTISE )</h3>
+                                <ul class="cv-list">
+                                    <li>AI Agent Architecture</li>
+                                    <li>Audio Engineering & Global Publishing</li>
+                                    <li>Systems Administration (Hardware/Network)</li>
                                 </ul>
                             </div>
                         </div>
 
                         <!-- Main: Experience & Education -->
                         <div class="cv-main">
-                            <div class="placeholder-box">
-                                [ CERTIFICATES & ACHIEVEMENTS PLACEHOLDER ]<br>
-                                Link to verified credentials.
-                            </div>
+                            <div class="cv-section hover-scale">
+                                <h3>( PROFILE )</h3>
+                                <p>Computer Systems Engineering student at Botswana Accountancy College (BAC) specializing in AI agent architecture, Kotlin mobile application development, and audio production. Acting as a solo founder for mobile ventures (Dumb) and operating as lead producer under the handle Prod Dayz. Passionate about bridging backend infrastructure—such as self-hosted Nextcloud environments on Ubuntu servers—with clean, high-performance frontend applications.</p>
+                            </div>  
+                            
+                            <div class="content-box">
+                                <div class="content-box-header">Certifications & Achievements</div>
+                                <div class="grid-cards">
+                                    <div class="card hover-scale">
+                                        <img src="https://media.licdn.com/dms/image/v2/D4D2DAQHMmDe9uDpjYw/profile-treasury-image-shrink_8192_8192/B4DaA04CJ8JIAQ-/0/1787593499496?e=1789513200&v=beta&t=MkLzSoacCcSoW2fz6aAkkReUiRk0srkdjyu6LCRz7LY" alt="Certificate" onerror="this.src='https://via.placeholder.com/100'">
+                                        <h4>Software Architecture</h4>
+                                        <p>Completed Specialization</p>
+                                    </div>
+                                </div>    
+                            </div>  
 
                             <div class="cv-section">
                                 <h3>( EDUCATION )</h3>
-                                
-                                <div class="cv-item">
+                                <div class="cv-item hover-scale">
                                     <div class="cv-date">CURRENT</div>
                                     <div class="cv-content">
                                         <h4>Botswana Accountancy College (BAC)</h4>
-                                        <p>Technology Student — Specializing in computing foundations and systems engineering.</p>
+                                        <p>Systems Engineering — Specializing in advanced computing foundations, LLM integrations, and robust application architecture in Gaborone.</p>
                                     </div>
                                 </div>
-
-                                <div class="cv-item">
-                                    <div class="cv-date">ONGOING</div>
+                                <div class="cv-item hover-scale">
+                                    <div class="cv-date">COMPLETED</div>
                                     <div class="cv-content">
-                                        <h4>LinkedIn Learning</h4>
+                                        <h4>Baobab / STEAM Home School</h4>
                                         <p>Pipeline certifications focusing on software architecture and modern development methodologies.</p>
+                                    </div>
+                                </div>                                
+                            </div>
+
+                            <div class="content-box">
+                                <div class="content-box-header">Featured Projects</div>
+                                <div class="grid-cards">
+                                    <a href="https://media.licdn.com/dms/image/v2/D4D2DAQH9SxK3gFCGoA/profile-treasury-image-shrink_1280_1280/B4DZ2A7mYXKIAQ-/0/1775984638235?e=1789516800&v=beta&t=KRzEB47vWwOnx-RMibQ160AQ5zrkXnZEMbFJ2fH5WZg" target="_blank" rel="noopener noreferrer" class="card profile-card hover-scale">
+                                        <img src="1774604837483.jfif" alt="Project Logic" onerror="this.src='https://via.placeholder.com/100'">
+                                        <h4>Goals App (Dumb)</h4>
+                                        <p>Kotlin MVP Productivity App</p>
+                                    </a>
+                                    <div class="card profile-card hover-scale">
+                                        <img src="https://via.placeholder.com/100" alt="Project Repo">
+                                        <h4>CHat_Dev_Space</h4>
+                                        <p>Custom Python AI Agent (Hugging Face)</p>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div>                            
                     </div>
                 </div>
             </div>
@@ -560,49 +718,37 @@
             <!-- 02: SOFTWARE -->
             <div id="software" class="tab-content">
                 <div class="info-grid">
-                    <div class="info-cell">
+                    <div class="info-cell hover-scale">
                         <h3>( Software )</h3>
-                        <p>Building robust Python AI agents, scalable self-hosted environments (Ubuntu/Nextcloud), and intuitive Kotlin mobile MVPs. Focused on bridging the gap between back-end infrastructure and clean user interfaces.</p>
+                        <p>Building robust Python AI agents (evaluating open-weight models like Qwen 3.6 and Mistral Small locally with MCP toolchains), managing scalable self-hosted storage via Ubuntu/Nextcloud, and architecting intuitive Kotlin mobile MVPs designed for Google Play publication.</p>
                     </div>
                 </div>
                 
                 <div class="section-header" style="margin-top: 6rem;">( LIVE WEBSITE DEPLOYMENTS )</div>
                 <div class="software-grid">
-                    <div>
+                    <div class="hover-scale">
                         <div class="device-frame">
                             <div class="device-topbar">
                                 <div class="dot r"></div><div class="dot y"></div><div class="dot g"></div>
                                 <div class="device-url">atty3333.github.io/quickinvoice/</div>
                             </div>
                             <div class="iframe-container">
-                                <iframe src="https://atty3333.github.io/quickinvoice/" loading="lazy"></iframe>
+                                <iframe src="https://atty3333.github.io/quickinvoice/" loading="lazy" title="QuickInvoice Live Deployment"></iframe>
                             </div>
                         </div>
                         <div class="device-caption"><strong>QuickInvoice</strong> — A simple invoice generator built with Python and Flask.</div>
                     </div>
-                    <div>
+                    <div class="hover-scale">
                         <div class="device-frame">
                             <div class="device-topbar">
                                 <div class="dot r"></div><div class="dot y"></div><div class="dot g"></div>
                                 <div class="device-url">atty3333.github.io/Chat-Personal-Ai-assistant-agent/</div>
                             </div>
                             <div class="iframe-container">
-                                <iframe src="https://atty3333.github.io/Chat-Personal-Ai-assistant-agent/" loading="lazy"></iframe>
+                                <iframe src="https://atty3333.github.io/Chat-Personal-Ai-assistant-agent/" loading="lazy" title="AI Chat Agent Assistant Live Deployment"></iframe>
                             </div>
                         </div>
                         <div class="device-caption"><strong>AI Chat Agent Assistant</strong> — An AI Agent assistant built with Python.</div>
-                    </div>
-                    <div>
-                        <div class="device-frame">
-                            <div class="device-topbar">
-                                <div class="dot r"></div><div class="dot y"></div><div class="dot g"></div>
-                                <div class="device-url">atty3333.github.io/Gaming-Hub/</div>
-                            </div>
-                            <div class="iframe-container">
-                                <iframe src="https://atty3333.github.io/Gaming-Hub/" loading="lazy"></iframe>
-                            </div>
-                        </div>
-                        <div class="device-caption"><strong>Gaming Hub</strong> — A centralized platform for managing and playing games.</div>
                     </div>
                 </div>
             </div>        
@@ -610,22 +756,22 @@
             <!-- 03: BEATS -->
             <div id="beats" class="tab-content">
                 <div class="info-grid">
-                    <div class="info-cell">
+                    <div class="info-cell hover-scale">
                         <h3>( Beats )</h3>
-                        <p>Crafting dark, atmospheric instrumentals and heavy-hitting 21 Savage type trap beats. Delivering high-quality audio mixed and mastered for independent artists across Spotify, BeatStars, and YouTube.</p>
+                        <p>Crafting dark, atmospheric instrumentals and heavy-hitting 21 Savage type trap beats under the handle Prod Dayz. Operating a comprehensive independent producer business model utilizing BeatStars Publishing for global royalty administration and active distribution across Spotify, YouTube, and TikTok.</p>
                     </div>
                 </div>
                 
                 <div class="category-block" style="margin-top: 6rem;">
                     <div class="section-header">( POPULAR DROPS )</div>
                     <div class="horizontal-scroll">
-                        <div class="scroll-item embed-card">
-                            <iframe src="https://player.beatstars.com/?storeId=YOUR_ID" width="100%" height="300" style="border:none;"></iframe>
-                            <p style="margin-top: 1rem;">21 Savage Type Beat - "Venom"</p>
+                        <div class="scroll-item embed-card hover-scale">
+                            <iframe src="https://player.beatstars.com/?storeId=YOUR_ID" width="100%" height="300" style="border:none;" title="BeatStars Player - Venom"></iframe>
+                            <p style="margin-top: 1.2rem;">21 Savage Type Beat - "Venom"</p>
                         </div>
-                        <div class="scroll-item embed-card">
-                            <iframe src="https://player.beatstars.com/?storeId=YOUR_ID" width="100%" height="300" style="border:none;"></iframe>
-                            <p style="margin-top: 1rem;">Dark Trap Instrumental</p>
+                        <div class="scroll-item embed-card hover-scale">
+                            <iframe src="https://player.beatstars.com/?storeId=YOUR_ID" width="100%" height="300" style="border:none;" title="BeatStars Player - Dark Trap"></iframe>
+                            <p style="margin-top: 1.2rem;">Dark Trap Instrumental</p>
                         </div>
                     </div>
                 </div>
@@ -633,9 +779,10 @@
                 <div class="category-block">
                     <div class="section-header">( PLACEMENT )</div>
                     <div class="horizontal-scroll">
-                        <div class="scroll-item embed-card spotify-embed">
-                            <iframe src="https://open.spotify.com/embed/track/YOUR_TRACK_ID?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-                            <p style="margin-top: 1rem; color: var(--text-dim);">Young Peterson - "Zero Degrees" (Prod. by Dayz)</p>
+                        <div class="scroll-item embed-card spotify-embed hover-scale">
+                            <!-- Placeholder for actual embed link -->
+                            <iframe src="https://open.spotify.com/embed/track/YOUR_TRACK_ID?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy" title="Spotify Embed"></iframe>
+                            <p style="margin-top: 1.2rem; color: var(--text-dim);">Young Peterson - "Zero Degrees" (Prod. by Dayz)</p>
                         </div>
                     </div>
                 </div>                
@@ -644,19 +791,19 @@
             <!-- 04: EDITS -->
             <div id="edits" class="tab-content">
                 <div class="info-grid">
-                    <div class="info-cell">
+                    <div class="info-cell hover-scale">
                         <h3>( Edits & Visuals )</h3>
-                        <p>Visual engineering using DaVinci Resolve. Specializing in compound clip management, speed ramping, color grading, and tying cinematic visuals tightly to rhythmic audio tracks.</p>
+                        <p>Visual engineering using DaVinci Resolve. Specializing in efficient compound clip management, advanced color grading workflows, speed ramping, and tying cinematic visuals tightly to rhythmic audio tracks for dynamic promotional social formats.</p>
                     </div>
                 </div>
                 <div class="category-block" style="margin-top: 6rem;">
                     <div class="section-header">( VIDEO WORK )</div>
                     <div class="horizontal-scroll">
-                        <div class="scroll-item embed-card">
+                        <div class="scroll-item embed-card hover-scale">
                             <div class="video-wrapper">
-                                <iframe src="https://www.youtube.com/embed/ScMzIvxBSi4" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                                <iframe src="https://www.youtube.com/embed/ScMzIvxBSi4" allow="autoplay; encrypted-media" allowfullscreen title="YouTube Embed - Compound Clip Management Test"></iframe>
                             </div>
-                            <p style="margin-top: 1rem; font-family: var(--font-mono); font-size: 0.9rem;">Compound Clip Management Test</p>
+                            <p style="margin-top: 1.2rem; font-family: var(--font-mono); font-size: 1rem;">Compound Clip Management Test in DaVinci Resolve</p>
                         </div>
                     </div>
                 </div>
@@ -666,43 +813,50 @@
 
     <!-- Application Logic -->
     <script>
-        // --- Splash Screen Logic ---
         let splashTimer;
         
         function enterSite() {
-            // Stop the timer so it doesn't fire again if the user clicked
             clearTimeout(splashTimer);
             
-            // Fade out splash
-            document.getElementById('intro-screen').classList.add('hidden');
+            const intro = document.getElementById('intro-screen');
+            const main = document.getElementById('main-portfolio');
             
-            // Fade in main site
-            document.getElementById('main-portfolio').classList.add('visible');
+            intro.classList.add('hidden');
+            main.classList.add('visible');
             
-            // Retrigger the fade-up animation on the CV tab to make the entry feel smooth
             const overviewTab = document.getElementById('overview');
+            // Clean application of reflow using requestAnimationFrame instead of forced sync reflow
             overviewTab.style.animation = 'none';
-            setTimeout(() => {
-                overviewTab.style.animation = 'fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards';
-            }, 100);
+            requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                    overviewTab.style.animation = 'fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards';
+                });
+            });
         }
 
-        // Auto-redirect to the site after 5 seconds (5000 milliseconds)
         window.addEventListener('DOMContentLoaded', () => {
             splashTimer = setTimeout(enterSite, 5000);
         });
 
-
-        // --- Navigation Logic ---
         function switchTab(tabId, btnElement) {
             const tabs = document.querySelectorAll('.tab-content');
-            tabs.forEach(tab => tab.classList.remove('active'));
+            tabs.forEach(tab => {
+                tab.classList.remove('active');
+                tab.style.animation = 'none'; // reset animation for re-trigger
+            });
 
             const buttons = document.querySelectorAll('.nav-links button');
             buttons.forEach(btn => btn.classList.remove('active'));
 
-            document.getElementById(tabId).classList.add('active');
+            const targetTab = document.getElementById(tabId);
+            targetTab.classList.add('active');
             btnElement.classList.add('active');
+            
+            requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                    targetTab.style.animation = 'fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards';
+                });
+            });
             
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
