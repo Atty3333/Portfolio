@@ -1,6 +1,6 @@
-# PROD DAYZ | Portfolio
+# Atang Letso Mutema | Portfolio
 
-A static, single-page portfolio and CV for Atang Mutema (Prod Dayz). It presents profile and education information alongside software, music-production, and video-editing work.
+A static, single-page portfolio and CV for Atang Mutema . It presents profile and education information alongside software, music-production, and video-editing work.
 
 ## Sections
 
@@ -21,6 +21,3 @@ python3 -m http.server 8000
 
 Open `http://localhost:8000` in a browser. An internet connection is needed for remote fonts, images, project demos, and embeds.
 
-## Before publishing
-
-Replace the `via.placeholder.com` image references and the `YOUR_ID` BeatStars and Spotify embed values in `index.html` with the intended assets and account/track identifiers. The Software tab embeds external project URLs, so update those links if the demos move.
