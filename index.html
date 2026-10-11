@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PROD DAYZ | Portfolio</title>
+    <meta name="description" content="Portfolio of Atang Mutema - Systems Engineer, Mobile Developer, and Music Producer (Prod. Dayz) based in Gaborone, Botswana.">
+    <title>Atang Mutema | Portfolio</title>
     
     <!-- High-End Typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,7 +17,7 @@
             --bg: #050505;
             --surface: #111111;
             --surface-hover: #1a1a1a;
-            --text-main: #F4F4F4; /* Brightened for better contrast */
+            --text-main: #F4F4F4;
             --text-dim: #999999;
             --border-color: rgba(255, 255, 255, 0.15);
             --accent: #FFFFFF;
@@ -33,13 +34,12 @@
             background-color: var(--bg);
             color: var(--text-main);
             font-family: var(--font-display);
-            /* Increased base font size to make everything slightly larger */
             font-size: 110%; 
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
         }
 
-        /* Hover Scale Physics (Applied globally to interactive elements) */
+        /* Hover Scale Physics */
         .hover-scale {
             transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
                         box-shadow 0.3s ease, 
@@ -78,7 +78,7 @@
         .intro-content { padding: 0 3vw; }
 
         .hero-title {
-            font-size: clamp(4.5rem, 11vw, 12rem); /* Increased scale */
+            font-size: clamp(4.5rem, 11vw, 12rem);
             line-height: 0.9;
             text-transform: uppercase;
             letter-spacing: -3px;
@@ -89,7 +89,7 @@
         .hero-meta {
             font-family: var(--font-mono);
             color: var(--text-dim);
-            font-size: 1.05rem; /* Increased */
+            font-size: 1.05rem;
             margin-bottom: 4rem;
             display: flex;
             gap: 2.5rem;
@@ -108,7 +108,7 @@
         .marquee {
             white-space: nowrap;
             font-family: var(--font-mono);
-            font-size: 1.1rem; /* Increased */
+            font-size: 1.1rem;
             text-transform: uppercase;
             animation: scroll-left 25s linear infinite;
         }
@@ -161,7 +161,7 @@
         .brand-logo {
             font-family: var(--font-mono);
             font-weight: 700;
-            font-size: 1.15rem; /* Increased */
+            font-size: 1.15rem;
             letter-spacing: -0.5px;
         }
 
@@ -170,7 +170,7 @@
             background: none; border: none;
             color: var(--text-dim);
             font-family: var(--font-mono);
-            font-size: 0.95rem; /* Increased */
+            font-size: 0.95rem;
             text-transform: uppercase;
             cursor: pointer;
             transition: color 0.3s, transform 0.2s;
@@ -219,13 +219,13 @@
         }
 
         .cv-header h2 {
-            font-size: 2.4rem; /* Increased */
+            font-size: 2.4rem;
             letter-spacing: -1px;
         }
 
         .cv-status {
             font-family: var(--font-mono);
-            font-size: 0.95rem; /* Increased */
+            font-size: 0.95rem;
             color: var(--success);
             border: 1px solid var(--border-color);
             padding: 0.5rem 1rem;
@@ -270,7 +270,7 @@
         }
 
         .profile-pic {
-            width: 140px; /* Increased */
+            width: 140px;
             height: 140px;
             border-radius: 50%;
             object-fit: cover;
@@ -285,7 +285,7 @@
         }
 
         .profile-name {
-            font-size: 1.8rem; /* Increased */
+            font-size: 1.8rem;
             margin-bottom: 0.3rem;
             color: var(--text-main);
             letter-spacing: -0.5px;
@@ -324,7 +324,7 @@
         }
 
         .cv-sidebar p, .cv-list li {
-            font-size: 1.15rem; /* Increased */
+            font-size: 1.15rem;
             line-height: 1.7;
             margin-bottom: 1rem;
         }
@@ -343,12 +343,10 @@
             border-radius: 8px;
             border: 1px solid transparent;
         }
-        /* Hover scale applied to CV item wrappers */
         .cv-item:hover {
             background: rgba(255,255,255,0.02);
             border-color: rgba(255,255,255,0.05);
         }
-        
         .cv-item:last-child { margin-bottom: 0; }
 
         .cv-date {
@@ -360,7 +358,7 @@
         }
 
         .cv-content h4 {
-            font-size: 1.6rem; /* Increased */
+            font-size: 1.6rem;
             margin-bottom: 0.6rem;
         }
 
@@ -422,16 +420,12 @@
             margin-bottom: 1.2rem;
             border: 1px solid var(--border-color);
         }
-        
-        .card.profile-card img {
-            border-radius: 50%;
-        }
 
         .card h4 { font-size: 1.25rem; margin-bottom: 0.6rem; }
         .card p { font-size: 1rem; color: var(--text-dim); }
 
         /* -------------------------------------
-           TABS 02, 03, 04 LAYOUT
+           DUAL-LAYER MAGNIFYING SPOTLIGHT EFFECT
         -------------------------------------- */
         .info-grid {
             display: grid;
@@ -441,19 +435,83 @@
             border-left: 1px solid var(--border-color);
         }
         .info-cell {
-            padding: 3rem;
+            padding: 3.5rem;
             border-right: 1px solid var(--border-color);
             border-bottom: 1px solid var(--border-color);
             background: var(--surface);
+            position: relative;
+            overflow: hidden;
         }
         .info-cell h3 {
             font-family: var(--font-mono);
-            font-size: 0.95rem;
+            font-size: 2rem;
             color: var(--text-dim);
             margin-bottom: 1.8rem;
         }
-        .info-cell p { font-size: 1.3rem; line-height: 1.7; } /* Increased text */
+        
+        /* Base Text Layer: Visible at standard size and muted opacity */
+        .info-cell p { 
+            position: relative;
+            font-size: clamp(2.8rem, 3.5vw, 2.6rem); 
+            line-height: 1.6; 
+            font-weight: 700;
+            color: rgba(244, 244, 244, 0.123);
+            user-select: none;
+            
+            
+            transition: color 0.3s ease;
+        }
 
+        /* Overlay Text Layer: Magnified + Highlighted in cursor spotlight */
+        .info-cell p::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            font-size: clamp(2.8rem, 3.5vw, 2.6rem);
+            line-height: 1.6;
+            font-weight: 700;
+            color: #FFFFFF;
+            pointer-events: none;
+            
+            /* Magnifying scale centered dynamically under cursor */
+            transform-origin: var(--x, 50%) var(--y, 50%);
+            transform: scale(1.5);
+            
+            opacity: 0;
+            transition: opacity 0.25s ease;
+            will-change: transform, opacity;
+
+            /* Radial spotlight mask isolating magnified area */
+            -webkit-mask-image: radial-gradient(
+                circle 60px at var(--x, 50%) var(--y, 50%), 
+                #000 0%, 
+                rgba(0, 0, 0, 0.75) 50%, 
+                transparent 100%
+            );
+            mask-image: radial-gradient(
+                circle 60px at var(--x, 50%) var(--y, 50%), 
+                #000 0%, 
+                rgba(0, 0, 0, 0.75) 50%, 
+                transparent 0%
+            );
+        }
+
+        .info-cell:hover p::after {
+            opacity: 1;
+        }
+
+        @media (hover: none), (max-width: 900px) {
+            .info-cell p {
+                color: var(--text-main) !important;
+            }
+            .info-cell p::after {
+                display: none !important;
+            }
+        }
+        
         .section-header {
             font-family: var(--font-mono);
             font-size: 1rem;
@@ -531,7 +589,7 @@
         }
         
         .scroll-item {
-            flex: 0 0 420px; /* Increased item width */
+            flex: 0 0 420px;
             scroll-snap-align: start;
         }
         
@@ -573,13 +631,14 @@
             .cv-date { flex: auto; }
             .software-grid { grid-template-columns: 1fr; }
             .scroll-item { flex: 0 0 300px; }
+            .info-cell { padding: 2rem; }
         }
     </style>
 </head>
 <body>
 
     <!-- 00: SPLASH SCREEN -->
-    <div id="intro-screen" onclick="enterSite()">
+    <div id="intro-screen" role="button" tabindex="0" aria-label="Enter Portfolio">
         <div class="intro-content">
             <h1 class="hero-title">ATANG<br>MUTEMA</h1>
             <div class="hero-meta">
@@ -591,7 +650,7 @@
         </div>
         
         <div class="marquee-container">
-            <div class="marquee">
+            <div class="marquee" aria-hidden="true">
                 SOFTWARE DEVELOPMENT * BEAT PRODUCTION * AI AGENT ARCHITECTURE * DAVINCI RESOLVE COLOR GRADING * KOTLIN MOBILE APPS * 21 SAVAGE TYPE BEATS * SOFTWARE DEVELOPMENT * BEAT PRODUCTION * AI AGENT ARCHITECTURE * DAVINCI RESOLVE COLOR GRADING *
             </div>
         </div>
@@ -600,20 +659,20 @@
     </div>
 
     <!-- MAIN PORTFOLIO -->
-    <div id="main-portfolio">
+    <div id="main-portfolio" aria-hidden="true">
         <header>
             <div class="brand-logo">MY PORTFOLIO</div>
-            <nav class="nav-links">
-                <button class="active" onclick="switchTab('overview', this)">(01) Overview</button>
-                <button onclick="switchTab('software', this)">(02) Software</button>
-                <button onclick="switchTab('beats', this)">(03) Beats</button>
-                <button onclick="switchTab('edits', this)">(04) Edits</button>
+            <nav class="nav-links" role="tablist">
+                <button class="active" role="tab" aria-selected="true" aria-controls="overview">(01) Overview</button>
+                <button role="tab" aria-selected="false" aria-controls="software">(02) Software</button>
+                <button role="tab" aria-selected="false" aria-controls="beats">(03) Beats</button>
+                <button role="tab" aria-selected="false" aria-controls="edits">(04) Edits</button>
             </nav>
         </header>
 
         <main>
             <!-- 01: OVERVIEW -->
-            <div id="overview" class="tab-content active">
+            <div id="overview" class="tab-content active" role="tabpanel">
                 <div class="cv-container">
                     <div class="cv-header">
                         <h2>CURRICULUM VITAE</h2>
@@ -633,16 +692,16 @@
                             </div>
 
                             <div class="cv-section hover-scale">
-                                <h3>( TECH STACK )</h3>
+                                <h3>( Engineering Stack )</h3>
                                 <ul class="cv-list">
-                                    <li>Python (LLMs / Qwen / Mistral / MCP)</li>
-                                    <li>Kotlin (Mobile App Development)</li>
-                                    <li>Ubuntu Server / Nextcloud Hosting</li>
-                                    <li>HTML / CSS / JS Architectures</li>
+                                    <li>Python (Groq APIs / Llama_cpp / MCP Tools)</li>
+                                    <li>Kotlin (Mobile App MVP Architecture)</li>
+                                    <li>Ubuntu Server / Nextcloud Administration</li>
+                                    <li>HTML / CSS / JS / Flask</li>
                                 </ul>
                             </div>
                             <div class="cv-section hover-scale">
-                                <h3>( AUDIO/VISUAL STACK )</h3>
+                                <h3>( Audio / Visual Stack )</h3>
                                 <ul class="cv-list">
                                     <li>FL Studio (Trap / Hip-Hop Production)</li>
                                     <li>DaVinci Resolve (Color Grading / Compound Clips)</li>
@@ -650,11 +709,11 @@
                                 </ul>
                             </div>    
                             <div class="cv-section hover-scale">
-                                <h3>( DOMAIN EXPERTISE )</h3>
+                                <h3>( Core Competencies )</h3>
                                 <ul class="cv-list">
-                                    <li>AI Agent Architecture</li>
+                                    <li>AI Agent Architecture & Tool Integration</li>
                                     <li>Audio Engineering & Global Publishing</li>
-                                    <li>Systems Administration (Hardware/Network)</li>
+                                    <li>Hardware Repair & Network Diagnostics</li>
                                 </ul>
                             </div>
                         </div>
@@ -663,7 +722,7 @@
                         <div class="cv-main">
                             <div class="cv-section hover-scale">
                                 <h3>( PROFILE )</h3>
-                                <p>Computer Systems Engineering student at Botswana Accountancy College (BAC) specializing in AI agent architecture, Kotlin mobile application development, and audio production. Acting as a solo founder for mobile ventures (Dumb) and operating as lead producer under the handle Prod Dayz. Passionate about bridging backend infrastructure—such as self-hosted Nextcloud environments on Ubuntu servers—with clean, high-performance frontend applications.</p>
+                                <p>Computer Systems Engineering student at Botswana Accountancy College (BAC) specializing in AI agent architecture, Kotlin mobile application development, and audio production. Acting as a solo founder for software ventures (Dumb) and operating as lead producer under the handle Prod. by Dayz. Passionate about bridging robust backend infrastructure—such as self-hosted Nextcloud environments on Ubuntu servers—with clean, high-performance applications.</p>
                             </div>  
                             
                             <div class="content-box">
@@ -671,44 +730,62 @@
                                 <div class="grid-cards">
                                     <div class="card hover-scale">
                                         <img src="https://media.licdn.com/dms/image/v2/D4D2DAQHMmDe9uDpjYw/profile-treasury-image-shrink_8192_8192/B4DaA04CJ8JIAQ-/0/1787593499496?e=1789513200&v=beta&t=MkLzSoacCcSoW2fz6aAkkReUiRk0srkdjyu6LCRz7LY" alt="Certificate" onerror="this.src='https://via.placeholder.com/100'">
-                                        <h4>Software Architecture</h4>
-                                        <p>Completed Specialization</p>
+                                        <h4>Introduction to Networks</h4>
+                                        <p>Completed</p>
                                     </div>
                                 </div>    
                             </div>  
 
                             <div class="cv-section">
+                                <h3>( EXPERIENCE )</h3>
+
+                                <div class="cv-item hover-scale">
+                                    <div class="cv-date">MAY 2026 - PRES</div>
+                                    <div class="cv-content">
+                                        <h4>Founder & Operator</h4>
+                                        <p><strong>daysdevices</strong> — Established and managed a local e-commerce platform via Facebook for listing, marketing, and selling pre-owned mobile devices in Gaborone.</p>
+                                    </div>
+                                </div>
+                                <div class="cv-item hover-scale">
+                                    <div class="cv-date">JUN 2026 - PRES</div>
+                                    <div class="cv-content">
+                                        <h4>Software Developer</h4>
+                                        <p><strong>Dumb (Software Venture)</strong> — Architecting an MVP goal-tracking application utilizing Kotlin, geared toward successful deployment on the Google Play Store.</p>
+                                    </div>
+                                </div>                                 
+                            </div>
+
+                            <div class="cv-section">
                                 <h3>( EDUCATION )</h3>
+
                                 <div class="cv-item hover-scale">
                                     <div class="cv-date">CURRENT</div>
                                     <div class="cv-content">
                                         <h4>Botswana Accountancy College (BAC)</h4>
                                         <p>Systems Engineering — Specializing in advanced computing foundations, LLM integrations, and robust application architecture in Gaborone.</p>
                                     </div>
-                                </div>
+                                </div>  
                                 <div class="cv-item hover-scale">
                                     <div class="cv-date">COMPLETED</div>
                                     <div class="cv-content">
-                                        <h4>Baobab / STEAM Home School</h4>
-                                        <p>Pipeline certifications focusing on software architecture and modern development methodologies.</p>
+                                        <h4>STEAM Home School</h4>
+                                        <p>Secondary education focused on foundational sciences, technology principles, and critical problem-solving paradigms.</p>
                                     </div>
-                                </div>                                
-                            </div>
-
-                            <div class="content-box">
-                                <div class="content-box-header">Featured Projects</div>
-                                <div class="grid-cards">
-                                    <a href="https://media.licdn.com/dms/image/v2/D4D2DAQH9SxK3gFCGoA/profile-treasury-image-shrink_1280_1280/B4DZ2A7mYXKIAQ-/0/1775984638235?e=1789516800&v=beta&t=KRzEB47vWwOnx-RMibQ160AQ5zrkXnZEMbFJ2fH5WZg" target="_blank" rel="noopener noreferrer" class="card profile-card hover-scale">
-                                        <img src="1774604837483.jfif" alt="Project Logic" onerror="this.src='https://via.placeholder.com/100'">
-                                        <h4>Goals App (Dumb)</h4>
-                                        <p>Kotlin MVP Productivity App</p>
-                                    </a>
-                                    <div class="card profile-card hover-scale">
-                                        <img src="https://via.placeholder.com/100" alt="Project Repo">
-                                        <h4>CHat_Dev_Space</h4>
-                                        <p>Custom Python AI Agent (Hugging Face)</p>
+                                </div>                                                                                        
+                                <div class="cv-item hover-scale">
+                                    <div class="cv-date">COMPLETED</div>
+                                    <div class="cv-content">
+                                        <h4>Regent Secondary School</h4>
+                                        <p>Junior secondary education establishing core academic proficiencies and early technical interest.</p>
                                     </div>
-                                </div>
+                                </div>                                     
+                                <div class="cv-item hover-scale">
+                                    <div class="cv-date">COMPLETED</div>
+                                    <div class="cv-content">
+                                        <h4>Baobab Primary School</h4>
+                                        <p>Primary educational foundation.</p>
+                                    </div>
+                                </div>   
                             </div>
                         </div>                            
                     </div>
@@ -716,14 +793,41 @@
             </div>
 
             <!-- 02: SOFTWARE -->
-            <div id="software" class="tab-content">
+            <div id="software" class="tab-content" role="tabpanel">
                 <div class="info-grid">
                     <div class="info-cell hover-scale">
                         <h3>( Software )</h3>
-                        <p>Building robust Python AI agents (evaluating open-weight models like Qwen 3.6 and Mistral Small locally with MCP toolchains), managing scalable self-hosted storage via Ubuntu/Nextcloud, and architecting intuitive Kotlin mobile MVPs designed for Google Play publication.</p>
+                        <p>Building custom Python AI agents integrating Model Context Protocol (MCP) tools with open-source LLMs via llama_cpp and Groq APIs. Managing scalable self-hosted storage via Ubuntu/Nextcloud, and architecting intuitive Kotlin goal-tracking MVPs for Google Play publication.</p>
                     </div>
                 </div>
                 
+                <div class="section-header" style="margin-top: 6rem;">( Atang's Pick )</div>
+                <div class="software-grid">
+                    <div class="hover-scale">
+                        <div class="device-frame">
+                            <div class="device-topbar">
+                                <div class="dot r"></div><div class="dot y"></div><div class="dot g"></div>
+                                <div class="device-url">atty3333.github.io/quickinvoice/</div>
+                            </div>
+                            <div class="iframe-container">
+                                <iframe src="https://atty3333.github.io/quickinvoice/" loading="lazy" title="QuickInvoice Live Deployment"></iframe>
+                            </div>
+                        </div>
+                        <div class="device-caption"><strong>QuickInvoice</strong> — A simple invoice generator built with Python and Flask.</div>
+                    </div>
+                    <div class="hover-scale">
+                        <div class="device-frame">
+                            <div class="device-topbar">
+                                <div class="dot r"></div><div class="dot y"></div><div class="dot g"></div>
+                                <div class="device-url">atty3333.github.io/Chat-Personal-Ai-assistant-agent/</div>
+                            </div>
+                            <div class="iframe-container">
+                                <iframe src="https://atty3333.github.io/Chat-Personal-Ai-assistant-agent/" loading="lazy" title="AI Chat Agent Assistant Live Deployment"></iframe>
+                            </div>
+                        </div>
+                        <div class="device-caption"><strong>AI Chat Agent Assistant</strong> — An interactive AI Agent assistant interface built with Python.</div>
+                    </div>
+                </div>
                 <div class="section-header" style="margin-top: 6rem;">( LIVE WEBSITE DEPLOYMENTS )</div>
                 <div class="software-grid">
                     <div class="hover-scale">
@@ -748,20 +852,32 @@
                                 <iframe src="https://atty3333.github.io/Chat-Personal-Ai-assistant-agent/" loading="lazy" title="AI Chat Agent Assistant Live Deployment"></iframe>
                             </div>
                         </div>
-                        <div class="device-caption"><strong>AI Chat Agent Assistant</strong> — An AI Agent assistant built with Python.</div>
+                        <div class="device-caption"><strong>AI Chat Agent Assistant</strong> — An interactive AI Agent assistant interface built with Python.</div>
                     </div>
-                </div>
+                </div>                
             </div>        
 
             <!-- 03: BEATS -->
-            <div id="beats" class="tab-content">
+            <div id="beats" class="tab-content" role="tabpanel">
                 <div class="info-grid">
                     <div class="info-cell hover-scale">
                         <h3>( Beats )</h3>
-                        <p>Crafting dark, atmospheric instrumentals and heavy-hitting 21 Savage type trap beats under the handle Prod Dayz. Operating a comprehensive independent producer business model utilizing BeatStars Publishing for global royalty administration and active distribution across Spotify, YouTube, and TikTok.</p>
+                        <p>Crafting dark, atmospheric instrumentals and heavy-hitting 21 Savage type trap beats under the handle Prod. by Dayz. Operating a comprehensive independent producer business model utilizing BeatStars Publishing for global royalty administration and active distribution across Spotify, YouTube, and TikTok.</p>
                     </div>
                 </div>
-                
+                <div class="category-block" style="margin-top: 6rem;">
+                    <div class="section-header">( Atang's Pick )</div>
+                    <div class="horizontal-scroll">
+                        <div class="scroll-item embed-card hover-scale">
+                            <iframe src="https://player.beatstars.com/?storeId=YOUR_ID" width="100%" height="300" style="border:none;" title="BeatStars Player - Venom"></iframe>
+                            <p style="margin-top: 1.2rem;">21 Savage Type Beat - "Venom"</p>
+                        </div>
+                        <div class="scroll-item embed-card hover-scale">
+                            <iframe src="https://player.beatstars.com/?storeId=YOUR_ID" width="100%" height="300" style="border:none;" title="BeatStars Player - Dark Trap"></iframe>
+                            <p style="margin-top: 1.2rem;">Dark Trap Instrumental</p>
+                        </div>
+                    </div>
+                </div>                
                 <div class="category-block" style="margin-top: 6rem;">
                     <div class="section-header">( POPULAR DROPS )</div>
                     <div class="horizontal-scroll">
@@ -780,8 +896,7 @@
                     <div class="section-header">( PLACEMENT )</div>
                     <div class="horizontal-scroll">
                         <div class="scroll-item embed-card spotify-embed hover-scale">
-                            <!-- Placeholder for actual embed link -->
-                            <iframe src="https://open.spotify.com/embed/track/YOUR_TRACK_ID?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy" title="Spotify Embed"></iframe>
+                            <iframe src="https://open.spotify.com/embed/track/YOUR_TRACK_ID?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy" title="Spotify Embed - Zero Degrees"></iframe>
                             <p style="margin-top: 1.2rem; color: var(--text-dim);">Young Peterson - "Zero Degrees" (Prod. by Dayz)</p>
                         </div>
                     </div>
@@ -789,11 +904,18 @@
             </div>
 
             <!-- 04: EDITS -->
-            <div id="edits" class="tab-content">
+            <div id="edits" class="tab-content" role="tabpanel">
                 <div class="info-grid">
                     <div class="info-cell hover-scale">
                         <h3>( Edits & Visuals )</h3>
                         <p>Visual engineering using DaVinci Resolve. Specializing in efficient compound clip management, advanced color grading workflows, speed ramping, and tying cinematic visuals tightly to rhythmic audio tracks for dynamic promotional social formats.</p>
+                    </div>
+                </div>
+                <div class="category-block">
+                    <div class="scroll-item embed-card hover-scale">
+                        <div class="video-wrapper">
+                            <iframe src="https://www.youtube.com/embed/ScMzIvxBSi4" allow="autoplay; encrypted-media" allowfullscreen title="YouTube Embed - Compound Clip Management Test"></iframe>
+                        </div>
                     </div>
                 </div>
                 <div class="category-block" style="margin-top: 6rem;">
@@ -806,60 +928,115 @@
                             <p style="margin-top: 1.2rem; font-family: var(--font-mono); font-size: 1rem;">Compound Clip Management Test in DaVinci Resolve</p>
                         </div>
                     </div>
-                </div>
+                </div>                
             </div>
         </main>
     </div>
 
     <!-- Application Logic -->
     <script>
-        let splashTimer;
-        
-        function enterSite() {
-            clearTimeout(splashTimer);
-            
-            const intro = document.getElementById('intro-screen');
-            const main = document.getElementById('main-portfolio');
-            
-            intro.classList.add('hidden');
-            main.classList.add('visible');
-            
-            const overviewTab = document.getElementById('overview');
-            // Clean application of reflow using requestAnimationFrame instead of forced sync reflow
-            overviewTab.style.animation = 'none';
-            requestAnimationFrame(() => {
-                requestAnimationFrame(() => {
-                    overviewTab.style.animation = 'fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards';
+        class PortfolioApp {
+            constructor() {
+                this.splashTimer = null;
+                this.rafId = null;
+                this.init();
+            }
+
+            init() {
+                this.bindEvents();
+                this.splashTimer = setTimeout(() => this.enterSite(), 5000);
+            }
+
+            bindEvents() {
+                const intro = document.getElementById('intro-screen');
+                intro.addEventListener('click', () => this.enterSite());
+                intro.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        this.enterSite();
+                    }
                 });
-            });
+
+                document.querySelectorAll('.nav-links button').forEach(btn => {
+                    btn.addEventListener('click', (e) => this.switchTab(e.currentTarget));
+                });
+
+                this.initSpotlightEffect();
+            }
+
+            enterSite() {
+                clearTimeout(this.splashTimer);
+                
+                const intro = document.getElementById('intro-screen');
+                const main = document.getElementById('main-portfolio');
+                
+                intro.classList.add('hidden');
+                intro.setAttribute('aria-hidden', 'true');
+                main.classList.add('visible');
+                main.setAttribute('aria-hidden', 'false');
+                
+                const overviewTab = document.getElementById('overview');
+                this.triggerFadeUpAnimation(overviewTab);
+            }
+
+            switchTab(btnElement) {
+                const targetId = btnElement.getAttribute('aria-controls');
+                
+                document.querySelectorAll('.tab-content').forEach(tab => {
+                    tab.classList.remove('active');
+                    tab.style.animation = 'none';
+                    tab.setAttribute('aria-hidden', 'true');
+                });
+
+                document.querySelectorAll('.nav-links button').forEach(btn => {
+                    btn.classList.remove('active');
+                    btn.setAttribute('aria-selected', 'false');
+                });
+
+                const targetTab = document.getElementById(targetId);
+                targetTab.classList.add('active');
+                targetTab.setAttribute('aria-hidden', 'false');
+                
+                btnElement.classList.add('active');
+                btnElement.setAttribute('aria-selected', 'true');
+                
+                this.triggerFadeUpAnimation(targetTab);
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+
+            triggerFadeUpAnimation(element) {
+                requestAnimationFrame(() => {
+                    requestAnimationFrame(() => {
+                        element.style.animation = 'fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards';
+                    });
+                });
+            }
+
+            initSpotlightEffect() {
+                const cells = document.querySelectorAll('.info-cell');
+                cells.forEach(cell => {
+                    const p = cell.querySelector('p');
+                    if (!p) return;
+
+                    // Dynamically map text content to data-text attribute for exact overlay replication
+                    p.setAttribute('data-text', p.textContent.trim());
+
+                    cell.addEventListener('mousemove', (e) => {
+                        if (this.rafId) cancelAnimationFrame(this.rafId);
+                        
+                        this.rafId = requestAnimationFrame(() => {
+                            const rect = p.getBoundingClientRect();
+                            const x = e.clientX - rect.left;
+                            const y = e.clientY - rect.top;
+                            p.style.setProperty('--x', `${x}px`);
+                            p.style.setProperty('--y', `${y}px`);
+                        });
+                    });
+                });
+            }
         }
 
-        window.addEventListener('DOMContentLoaded', () => {
-            splashTimer = setTimeout(enterSite, 5000);
-        });
-
-        function switchTab(tabId, btnElement) {
-            const tabs = document.querySelectorAll('.tab-content');
-            tabs.forEach(tab => {
-                tab.classList.remove('active');
-                tab.style.animation = 'none'; // reset animation for re-trigger
-            });
-
-            const buttons = document.querySelectorAll('.nav-links button');
-            buttons.forEach(btn => btn.classList.remove('active'));
-
-            const targetTab = document.getElementById(tabId);
-            targetTab.classList.add('active');
-            btnElement.classList.add('active');
-            
-            requestAnimationFrame(() => {
-                requestAnimationFrame(() => {
-                    targetTab.style.animation = 'fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards';
-                });
-            });
-            
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
+        window.addEventListener('DOMContentLoaded', () => new PortfolioApp());
     </script>
 </body>
 </html>
